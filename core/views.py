@@ -1,4 +1,4 @@
-
+from .models import Hero, Category, Product, Offer, WhyChooseUs
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Hero, Category, Product
@@ -7,12 +7,33 @@ from .models import Hero, Category, Product
 def home(request):
     hero = Hero.objects.filter(is_active=True).first()
     categories = Category.objects.all()
-    bag_products = Product.objects.filter(is_bag=True)
-    shag_products = Product.objects.filter(is_shag=True)
+    bag_products = Product.objects.filter(is_bag=True)[:4]
+    shag_products = Product.objects.filter(is_shag=True)[:4]
+    offer = Offer.objects.first()
+    why_choose_us = WhyChooseUs.objects.all()
     return render(request, 'home.html', {
         'hero': hero,
         'categories': categories,
         'bag_products': bag_products,
+        'shag_products': shag_products,
+        'offer': offer,
+        'why_choose_us': why_choose_us,
+    })
+
+
+def bag_page(request):
+    categories = Category.objects.all()
+    bag_products = Product.objects.filter(is_bag=True)
+    return render(request, 'bagPage.html', {
+        'categories': categories,
+        'bag_products': bag_products,
+    })
+
+def shag_page(request):
+    categories = Category.objects.all()
+    shag_products = Product.objects.filter(is_shag=True)
+    return render(request, 'shagPage.html', {
+        'categories': categories,
         'shag_products': shag_products,
     })
 
@@ -20,6 +41,7 @@ def home(request):
 def products_by_category(request, category_id):
     section_type = request.GET.get('type')
     if category_id == 0:
+
         if section_type == 'bag':
             products = Product.objects.filter(is_bag=True)
         elif section_type == 'shag':
@@ -47,3 +69,18 @@ def products_by_category(request, category_id):
         for p in products
     ]
     return JsonResponse({'products': data})
+
+
+def aboutPage(request):
+    return render(request, 'aboutPage.html')
+
+def contactPage(request):
+    return render(request, 'contactPage.html')
+
+def offer(request):
+    offer = Offer.objects.first()
+    return render(request, 'offer.html', {'offer': offer})
+
+def why(request):
+    why_items = WhyChooseUs.objects.all()
+    return render(request, 'why.html', {'why_items': why_items})

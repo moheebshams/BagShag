@@ -1,15 +1,13 @@
+{% extends "base.html" %}
 {% load static %}
+{% block body %}
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
-  <!-- Section Header -->
   <div class="text-center mb-12 md:mb-16">
-    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary tracking-tight">Shags Collection</h2>
-    <p class="text-gray-600 mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
-      Elegant bags designed for every style and occasion.
-    </p>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary tracking-tight">All Shags</h2>
     <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
   </div>
 
-  <!-- Categories -->
+  <!-- Category Filter Bar -->
   <nav class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-10 md:mb-12" id="shag-categories">
     <button class="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-md hover:shadow-lg" data-category="all">All</button>
     {% for category in categories %}
@@ -17,7 +15,6 @@
     {% endfor %}
   </nav>
 
-  <!-- Products Grid -->
   <main id="shag-products" class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6 lg:gap-8">
     {% for product in shag_products %}
     <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
@@ -27,9 +24,9 @@
         {% else %}
         <img src="{% static 'images/bag1.jpg' %}" alt="{{ product.name }}" class="max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500">
         {% endif %}
-  {% if product.badge %}
-  <div class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm">{{ product.badge }}</div>
-  {% endif %}
+        {% if product.badge %}
+        <div class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm">{{ product.badge }}</div>
+        {% endif %}
         <button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors">
           <i class="far fa-heart text-sm"></i>
         </button>
@@ -54,32 +51,22 @@
     </div>
     {% endfor %}
   </main>
-
-  <!-- View All -->
-  <div class="text-center mt-12 md:mt-16">
-    <a href="{% url 'shagPage' %}" class="inline-flex items-center border-2 border-primary text-primary px-6 py-3 rounded-xl font-medium text-sm sm:text-base hover:bg-primary hover:text-white transition-all duration-200 group">
-      View All Shags
-      <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-    </a>
-  </div>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const categoryNav = document.getElementById('shag-categories');
       const productsGrid = document.getElementById('shag-products');
       if (categoryNav) {
         categoryNav.addEventListener('click', function(e) {
-            if (e.target.tagName === 'BUTTON') {
-              // Remove active class from all buttons
-              Array.from(categoryNav.querySelectorAll('button')).forEach(btn => {
-                btn.classList.remove('bg-primary', 'text-white', 'shadow-md', 'hover:shadow-lg');
-                btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200');
-              });
-              // Add active class to clicked button
-              e.target.classList.add('bg-primary', 'text-white', 'shadow-md', 'hover:shadow-lg');
-              e.target.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200');
+          if (e.target.tagName === 'BUTTON') {
+            Array.from(categoryNav.querySelectorAll('button')).forEach(btn => {
+              btn.classList.remove('bg-primary', 'text-white', 'shadow-md', 'hover:shadow-lg');
+              btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200');
+            });
+            e.target.classList.add('bg-primary', 'text-white', 'shadow-md', 'hover:shadow-lg');
+            e.target.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200');
 
-              const catId = e.target.getAttribute('data-category');
-              if (catId === 'all') {
+            const catId = e.target.getAttribute('data-category');
+            if (catId === 'all') {
               fetch(`/products/category/0/?type=shag`)
                 .then(res => res.json())
                 .then(data => {
@@ -89,7 +76,7 @@
                     <div class=\"bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group\">
                       <div class=\"relative h-60 sm:h-64 bg-gray-50 flex items-center justify-center p-4 overflow-hidden\">
                         <img src=\"${product.image || '{% static 'images/bag1.jpg' %}'}\" alt=\"${product.name}\" class=\"max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500\">
-                        <div class=\"absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm\">New</div>
+                        ${product.badge ? `<div class='absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm'>${product.badge}</div>` : ''}
                         <button class=\"absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors\">
                           <i class=\"far fa-heart text-sm\"></i>
                         </button>
@@ -123,7 +110,7 @@
                   <div class=\"bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group\">
                     <div class=\"relative h-60 sm:h-64 bg-gray-50 flex items-center justify-center p-4 overflow-hidden\">
                       <img src=\"${product.image || '{% static 'images/bag1.jpg' %}'}\" alt=\"${product.name}\" class=\"max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500\">
-                      <div class=\"absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm\">New</div>
+                      ${product.badge ? `<div class='absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm'>${product.badge}</div>` : ''}
                       <button class=\"absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors\">
                         <i class=\"far fa-heart text-sm\"></i>
                       </button>
@@ -152,3 +139,4 @@
     });
   </script>
 </section>
+{% endblock %}

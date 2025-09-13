@@ -1,0 +1,28 @@
+{% load static %}
+<section class="w-full px-4 md:px-7 mt-16 mb-16">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight">
+        Why Choose BagShag?
+      </h1>
+      <p class="text-gray-600 mt-3 text-base md:text-lg max-w-2xl mx-auto">
+        We're committed to excellence in every aspect of your shopping experience
+      </p>
+      <div class="w-20 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {% for item in why_choose_us %}
+      <div class="bg-white rounded-xl p-8 text-center border border-gray-150 hover:border-primary group">
+        <div class="w-16 h-16 mx-auto -mt-12 bg-primary rounded-2xl flex items-center justify-center">
+          <i class="{{ item.icon_class }} text-white text-2xl"></i>
+        </div>
+        <h3 class="mt-6 font-semibold text-lg text-gray-900">{{ item.title }}</h3>
+        <p class="mt-2 text-sm text-gray-600">{{ item.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

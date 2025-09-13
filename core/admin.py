@@ -2,7 +2,17 @@ from django.contrib import admin
 
 # Hero Section
 
-from .models import Hero, Category, Product
+from .models import Hero, Category, Product, Offer, WhyChooseUs
+@admin.register(Offer)
+class OfferAdmin(admin.ModelAdmin):
+    list_display = ('title', 'sale', 'discount', 'days', 'hours', 'minutes', 'start_time')
+    search_fields = ('title', 'sale', 'discount', 'description')
+    ordering = ('-id',)
+
+@admin.register(WhyChooseUs)
+class WhyChooseUsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'icon_class')
+    search_fields = ('title', 'description')
 
 
 @admin.register(Hero)
