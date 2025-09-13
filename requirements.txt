@@ -1,0 +1,20 @@
+# Core Django framework
+Django
+
+# For image handling (uploading, resizing, product images)
+pillow
+
+# For managing environment variables (.env file for SECRET_KEY, DB, API keys)
+python-decouple
+
+# For integrating Tailwind CSS with Django
+django-tailwind
+
+# Auto-reload browser when Tailwind/CSS changes (development use)
+django-browser-reload
+
+# For making API calls (e.g., JazzCash / Easypaisa payments)
+requests
+
+# Debugging tool (shows SQL queries, performance, etc.) - development use
+django-debug-toolbar

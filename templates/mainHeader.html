@@ -1,0 +1,119 @@
+{% load static %}
+
+<header class="sticky top-0 z-50 max-w-[1400px] mx-auto bg-white border-b border-gray-200">
+  <div class="relative flex items-center justify-between h-[70px] px-4 md:px-7">
+
+    <!-- Logo (Left) -->
+    <div class="flex items-center">
+      <a href="{% url 'home' %}" class="text-2xl font-bold text-primary flex items-center">
+        <i class="fas fa-shopping-bag mr-2"></i> BagShag
+      </a>
+    </div>
+
+    <!-- Navigation (Desktop Center) -->
+    <nav class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:block">
+      <ul class="flex space-x-6">
+        <li><a href="{% url 'home' %}" class="text-gray-700 hover:text-primary font-semibold">Home</a></li>
+        <li><a href="{% url 'home' %}" class="text-gray-700 hover:text-primary font-semibold">Bags</a></li>
+        <li><a href="{% url 'home' %}" class="text-gray-700 hover:text-primary font-semibold">Shags</a></li>
+        <li><a href="{% url 'home' %}" class="text-gray-700 hover:text-primary font-semibold">About Us</a></li>
+        <li><a href="{% url 'home' %}" class="text-gray-700 hover:text-primary font-semibold">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- User, Wishlist, Cart & Hamburger (Right) -->
+    <div class="flex items-center space-x-4">
+      <a href="{% url 'home' %}" class="hidden md:block">
+        <i class="fas fa-user text-gray-700 hover:text-primary cursor-pointer text-lg"></i>
+      </a>
+      <a href="{% url 'home' %}" class="hidden md:block">
+        <i class="fas fa-shopping-cart text-gray-700 hover:text-primary cursor-pointer text-lg"></i>
+      </a>
+      <a href="{% url 'home' %}" class="hidden md:block">
+        <i class="fas fa-heart text-gray-700 hover:text-primary cursor-pointer text-lg"></i>
+      </a>
+     
+
+      <!-- Hamburger (Mobile Only) -->
+      <button id="hamburger" class="md:hidden text-gray-700 hover:text-primary text-2xl transition-transform duration-300">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden bg-white border-t border-gray-200 transform origin-top transition-all duration-300 scale-y-0 h-0">
+    <ul class="flex flex-col py-4">
+      <li class="border-b border-gray-100">
+        <a href="{% url 'home' %}" class="block py-3 px-6 text-gray-700 hover:text-primary hover:bg-gray-50 font-semibold transition-colors duration-200">
+          <i class="fas fa-home mr-3 w-5 text-center"></i> Home
+        </a>
+      </li>
+      <li class="border-b border-gray-100">
+        <a href="{% url 'home' %}" class="block py-3 px-6 text-gray-700 hover:text-primary hover:bg-gray-50 font-semibold transition-colors duration-200">
+          <i class="fas fa-shopping-bag mr-3 w-5 text-center"></i> Bags
+        </a>
+      </li>
+      <li class="border-b border-gray-100">
+        <a href="{% url 'home' %}" class="block py-3 px-6 text-gray-700 hover:text-primary hover:bg-gray-50 font-semibold transition-colors duration-200">
+          <i class="fas fa-tag mr-3 w-5 text-center"></i> Shags
+        </a>
+      </li>
+      <li class="border-b border-gray-100">
+        <a href="{% url 'home' %}" class="block py-3 px-6 text-gray-700 hover:text-primary hover:bg-gray-50 font-semibold transition-colors duration-200">
+          <i class="fas fa-info-circle mr-3 w-5 text-center"></i> About Us
+        </a>
+      </li>
+      <li class="border-b border-gray-100">
+        <a href="{% url 'home' %}" class="block py-3 px-6 text-gray-700 hover:text-primary hover:bg-gray-50 font-semibold transition-colors duration-200">
+          <i class="fas fa-envelope mr-3 w-5 text-center"></i> Contact
+        </a>
+      </li>
+    </ul>
+    
+    <!-- Mobile Account Actions -->
+    <div class="px-4 py-3 border-t border-gray-200 bg-gray-50">
+      <div class="flex justify-around">
+        <a href="{% url 'home' %}" class="flex flex-col items-center text-gray-700 hover:text-primary">
+          <i class="fas fa-user text-lg mb-1"></i>
+          <span class="text-xs">Account</span>
+        </a>
+        <a href="{% url 'home' %}" class="flex flex-col items-center text-gray-700 hover:text-primary">
+          <i class="fas fa-shopping-cart text-lg mb-1"></i>
+          <span class="text-xs">Cart</span>
+        </a>
+        <a href="{% url 'home' %}" class="flex flex-col items-center text-gray-700 hover:text-primary">
+          <i class="fas fa-heart text-lg mb-1"></i>
+          <span class="text-xs">Wishlist</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile Menu Toggle with animation
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  
+  function toggleMenu() {
+    mobileMenu.classList.toggle('scale-y-0');
+    mobileMenu.classList.toggle('h-0');
+    mobileMenu.classList.toggle('h-auto');
+    
+    // Rotate hamburger icon when menu is open
+    hamburger.classList.toggle('rotate-90');
+  }
+  
+  hamburger.addEventListener('click', toggleMenu);
+  closeMenu.addEventListener('click', toggleMenu);
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target) && !mobileMenu.classList.contains('scale-y-0')) {
+      toggleMenu();
+    }
+  });
+</script>
