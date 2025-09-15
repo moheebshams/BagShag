@@ -28,7 +28,7 @@
         <div class="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm">{{ product.badge }}</div>
         {% endif %}
         <button class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors">
-          <i class="far fa-heart text-sm"></i>
+          <i class="far fa-eye text-lg"></i>
         </button>
       </div>
       <div class="p-4 md:p-5 flex flex-col gap-2">
@@ -43,9 +43,6 @@
               <span class="text-green-600 text-xs font-medium bg-green-50 px-2 py-1 rounded-md">{{ product.discount_percent }}% off</span>
             {% endif %}
           </div>
-          <button class="bg-primary text-white w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md">
-            <i class="fas fa-shopping-cart text-sm"></i>
-          </button>
         </div>
       </div>
     </div>
@@ -78,7 +75,7 @@
                         <img src=\"${product.image || '{% static 'images/bag1.jpg' %}'}\" alt=\"${product.name}\" class=\"max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500\">
                         ${product.badge ? `<div class='absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm'>${product.badge}</div>` : ''}
                         <button class=\"absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors\">
-                          <i class=\"far fa-heart text-sm\"></i>
+                          <i class=\"far fa-eye text-lg\"></i>
                         </button>
                       </div>
                       <div class=\"p-4 md:p-5 flex flex-col gap-2\">
@@ -89,9 +86,6 @@
                             ${product.old_price ? `<span class='text-gray-500 text-sm line-through'>$${product.old_price}</span>` : ''}
                             ${product.discount_percent ? `<span class='text-green-600 text-xs font-medium bg-green-50 px-2 py-1 rounded-md'>${product.discount_percent}% off</span>` : ''}
                           </div>
-                          <button class=\"bg-primary text-white w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md\">
-                            <i class=\"fas fa-shopping-cart text-sm\"></i>
-                          </button>
                         </div>
                       </div>
                     </div>
@@ -112,7 +106,7 @@
                       <img src=\"${product.image || '{% static 'images/bag1.jpg' %}'}\" alt=\"${product.name}\" class=\"max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500\">
                       ${product.badge ? `<div class='absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm'>${product.badge}</div>` : ''}
                       <button class=\"absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors\">
-                        <i class=\"far fa-heart text-sm\"></i>
+                        <i class=\"far fa-eye text-lg\"></i>
                       </button>
                     </div>
                     <div class=\"p-4 md:p-5 flex flex-col gap-2\">
@@ -123,9 +117,6 @@
                           ${product.old_price ? `<span class='text-gray-500 text-sm line-through'>$${product.old_price}</span>` : ''}
                           ${product.discount_percent ? `<span class='text-green-600 text-xs font-medium bg-green-50 px-2 py-1 rounded-md'>${product.discount_percent}% off</span>` : ''}
                         </div>
-                        <button class=\"bg-primary text-white w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md\">
-                          <i class=\"fas fa-shopping-cart text-sm\"></i>
-                        </button>
                       </div>
                     </div>
                   </div>

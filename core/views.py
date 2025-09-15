@@ -65,6 +65,7 @@ def products_by_category(request, category_id):
             'price': str(p.price),
             'old_price': str(p.old_price) if p.old_price else '',
             'discount_percent': p.discount_percent if p.discount_percent else '',
+            'badge': p.badge if p.badge else '',
             'is_bag': p.is_bag,
             'is_shag': p.is_shag,
         }
