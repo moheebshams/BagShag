@@ -32,3 +32,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'price', 'is_bag', 'is_shag', 'created_at')
     list_filter = ('category', 'is_bag', 'is_shag')
     search_fields = ('name', 'description')
+
+# Banner Model
+from .models import Banner
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)

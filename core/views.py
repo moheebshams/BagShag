@@ -1,7 +1,7 @@
 from .models import Hero, Category, Product, Offer, WhyChooseUs
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Hero, Category, Product
+from .models import Hero, Category, Product, Banner
 
 
 def home(request):
@@ -11,6 +11,7 @@ def home(request):
     shag_products = Product.objects.filter(is_shag=True)[:4]
     offer = Offer.objects.first()
     why_choose_us = WhyChooseUs.objects.all()
+    banners = Banner.objects.all()
     return render(request, 'home.html', {
         'hero': hero,
         'categories': categories,
@@ -18,6 +19,7 @@ def home(request):
         'shag_products': shag_products,
         'offer': offer,
         'why_choose_us': why_choose_us,
+        'banners': banners,
     })
 
 

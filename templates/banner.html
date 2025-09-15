@@ -1,0 +1,55 @@
+{% load static %}
+
+<style>
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+
+  /* Pause animation on hover */
+  .relative:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+</style>
+
+<section class="w-full py-16 overflow-hidden">
+  <div class="container mx-auto px-4">
+    <!-- Section header -->
+    <div class="text-center mb-12 md:mb-16">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary tracking-tight">Featured Brands</h2>
+    <p class="text-gray-600 mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+      Discover our trusted partners and featured products
+    </p>
+    <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+  </div>
+    
+    <!-- Marquee container -->
+    <div class="relative overflow-hidden">
+      <!-- Gradient overlays for a polished look -->
+        <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white via-white/80 to-transparent z-10"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white via-white/80 to-transparent z-10"></div>
+
+      
+      <!-- Marquee Wrapper - Duplicated content for seamless looping -->
+      <div class="flex animate-marquee whitespace-nowrap">
+        {% for banner in banners %}
+        <div class="group flex-shrink-0 w-48 h-32 mx-5 bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex items-center justify-center hover:border-primary">
+          <img src="{{ banner.image.url }}" alt="{{ banner.title }}" class="w-full h-full object-contain" />
+        </div>
+        {% endfor %}
+        <!-- Duplicated set for seamless looping -->
+        {% for banner in banners %}
+        <div class="group flex-shrink-0 w-48 h-32 mx-5 bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex items-center justify-center hover:border-primary">
+          <img src="{{ banner.image.url }}" alt="{{ banner.title }}" class="w-full h-full object-contain" />
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

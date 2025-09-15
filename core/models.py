@@ -1,5 +1,5 @@
-
 from django.db import models
+
 
 # Hero Section
 class Hero(models.Model):
@@ -77,3 +77,10 @@ class WhyChooseUs(models.Model):
     def __str__(self):
         return self.title
     
+# Banner Model
+class Banner(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='banners/')
+
+    def __str__(self):
+        return self.title
