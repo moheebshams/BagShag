@@ -29,7 +29,7 @@
           {% else %}
             <span></span>
           {% endif %}
-          <a href="{% url 'productDetail' %}" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
+          <a href="/productDetail/{{ product.id }}/" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
             <i class="far fa-eye text-lg"></i>
           </a>
         </div>
@@ -78,7 +78,7 @@
                         <img src=\"${product.image || '{% static 'images/bag1.jpg' %}'}\" alt=\"${product.name}\" class=\"max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500\">
                         <div class=\"absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none\">
                           ${product.badge ? `<div class='bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm pointer-events-auto'>${product.badge}</div>` : `<span></span>`}
-                          <a href="{% url 'productDetail' %}" class=\"w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto\">
+                          <a href="/productDetail/${product.id}/" class=\"w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto\">
                             <i class=\"far fa-eye text-lg\"></i>
                           </a>
                         </div>
@@ -110,7 +110,7 @@
                     <div class=\"relative h-60 sm:h-64 bg-gray-50 flex items-center justify-center p-4 overflow-hidden\">
                       <img src=\"${product.image || '{% static 'images/bag1.jpg' %}'}\" alt=\"${product.name}\" class=\"max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500\">
                       ${product.badge ? `<div class='absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm'>${product.badge}</div>` : ''}
-                      <a href="{% url 'productDetail' %}" class=\"absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors\">
+                      <a href="/productDetail/${product.id}/" class=\"absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors\">
                         <i class=\"far fa-eye text-lg\"></i>
                       </a>
                     </div>

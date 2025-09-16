@@ -23,14 +23,14 @@ class HeroAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug')
-    prepopulated_fields = {"slug": ("name",)}
+    list_display = ('name', 'is_bag', 'is_shag')
+    list_filter = ('is_bag', 'is_shag')
     search_fields = ('name',)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'price', 'is_bag', 'is_shag', 'created_at')
-    list_filter = ('category', 'is_bag', 'is_shag')
+    list_display = ('name', 'category', 'price', 'created_at')
+    list_filter = ('category', 'created_at')
     search_fields = ('name', 'description')
 
 # Banner Model

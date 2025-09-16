@@ -12,7 +12,7 @@
   <!-- Categories -->
   <nav class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-10 md:mb-12" id="shag-categories">
     <button class="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-md hover:shadow-lg" data-category="all">All</button>
-    {% for category in categories %}
+  {% for category in shag_categories %}
       <button class="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-white text-gray-700 border border-gray-200 hover:bg-primary hover:text-white hover:border-primary" data-category="{{ category.id }}">{{ category.name }}</button>
     {% endfor %}
   </nav>
@@ -33,7 +33,7 @@
     {% else %}
       <span></span>
     {% endif %}
-    <a href="{% url 'productDetail' %}" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
+    <a href="/productDetail/{{ product.id }}/" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
       <i class="far fa-eye text-lg"></i>
     </a>
   </div>
@@ -92,7 +92,7 @@
                         <img src=\"${product.image || '{% static 'images/bag1.jpg' %}'}\" alt=\"${product.name}\" class=\"max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500\">
                         <div class=\"absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none\">
                           ${product.badge ? `<div class='bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm pointer-events-auto'>${product.badge}</div>` : `<span></span>`}
-                          <a href="{% url 'productDetail' %}" class=\"w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto\">
+                          <a href="/productDetail/${product.id}/" class=\"w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto\">
                             <i class=\"far fa-eye text-lg\"></i>
                           </a>
                         </div>
@@ -125,7 +125,7 @@
                       <img src=\"${product.image || '{% static 'images/bag1.jpg' %}'}\" alt=\"${product.name}\" class=\"max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500\">
                       <div class=\"absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none\">
                         ${product.badge ? `<div class='bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm pointer-events-auto'>${product.badge}</div>` : `<span></span>`}
-                        <a href="{% url 'productDetail' %}" class=\"w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto\">
+                        <a href="/productDetail/${product.id}/" class=\"w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto\">
                           <i class=\"far fa-eye text-lg\"></i>
                         </a>
                       </div>

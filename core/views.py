@@ -6,15 +6,17 @@ from .models import Hero, Category, Product, Banner
 
 def home(request):
     hero = Hero.objects.filter(is_active=True).first()
-    categories = Category.objects.all()
-    bag_products = Product.objects.filter(is_bag=True)[:4]
-    shag_products = Product.objects.filter(is_shag=True)[:4]
+    bag_categories = Category.objects.filter(is_bag=True)
+    shag_categories = Category.objects.filter(is_shag=True)
+    bag_products = Product.objects.filter(category__is_bag=True)[:4]
+    shag_products = Product.objects.filter(category__is_shag=True)[:4]
     offer = Offer.objects.first()
     why_choose_us = WhyChooseUs.objects.all()
     banners = Banner.objects.all()
     return render(request, 'home.html', {
         'hero': hero,
-        'categories': categories,
+        'bag_categories': bag_categories,
+        'shag_categories': shag_categories,
         'bag_products': bag_products,
         'shag_products': shag_products,
         'offer': offer,
@@ -22,23 +24,30 @@ def home(request):
         'banners': banners,
     })
 
-def productDetail(request):
-    return render(request, 'productDetail.html')
-
+# Product detail view
+def productDetail(request, pk):
+    from django.shortcuts import get_object_or_404
+    product = get_object_or_404(Product, pk=pk)
+    # Fetch related products (same category, exclude current)
+    related_products = Product.objects.filter(category=product.category).exclude(pk=product.pk)[:4]
+    return render(request, 'productDetail.html', {
+        'product': product,
+        'related_products': related_products,
+    })
 
 def bag_page(request):
-    categories = Category.objects.all()
-    bag_products = Product.objects.filter(is_bag=True)
+    bag_categories = Category.objects.filter(is_bag=True)
+    bag_products = Product.objects.filter(category__is_bag=True)
     return render(request, 'bagPage.html', {
-        'categories': categories,
+        'categories': bag_categories,
         'bag_products': bag_products,
     })
 
 def shag_page(request):
-    categories = Category.objects.all()
-    shag_products = Product.objects.filter(is_shag=True)
+    shag_categories = Category.objects.filter(is_shag=True)
+    shag_products = Product.objects.filter(category__is_shag=True)
     return render(request, 'shagPage.html', {
-        'categories': categories,
+        'categories': shag_categories,
         'shag_products': shag_products,
     })
 
@@ -48,17 +57,17 @@ def products_by_category(request, category_id):
     if category_id == 0:
 
         if section_type == 'bag':
-            products = Product.objects.filter(is_bag=True)
+            products = Product.objects.filter(category__is_bag=True)
         elif section_type == 'shag':
-            products = Product.objects.filter(is_shag=True)
+            products = Product.objects.filter(category__is_shag=True)
         else:
             products = Product.objects.none()
     else:
         products = Product.objects.filter(category_id=category_id)
         if section_type == 'bag':
-            products = products.filter(is_bag=True)
+            products = products.filter(category__is_bag=True)
         elif section_type == 'shag':
-            products = products.filter(is_shag=True)
+            products = products.filter(category__is_shag=True)
     data = [
         {
             'id': p.id,
@@ -69,8 +78,6 @@ def products_by_category(request, category_id):
             'old_price': str(p.old_price) if p.old_price else '',
             'discount_percent': p.discount_percent if p.discount_percent else '',
             'badge': p.badge if p.badge else '',
-            'is_bag': p.is_bag,
-            'is_shag': p.is_shag,
         }
         for p in products
     ]
