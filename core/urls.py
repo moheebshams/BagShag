@@ -11,6 +11,8 @@ urlpatterns = [
     path('contact/', views.contactPage, name='contactPage'),
     path('offer/', views.offer, name='offerPage'),
     path('why/', views.why, name='whyPage'),
+    path('productDetail/', views.productDetail, name='productDetail'),
+    
 ]
 
 # Serving media files during development

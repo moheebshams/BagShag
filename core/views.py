@@ -22,6 +22,9 @@ def home(request):
         'banners': banners,
     })
 
+def productDetail(request):
+    return render(request, 'productDetail.html')
+
 
 def bag_page(request):
     categories = Category.objects.all()
