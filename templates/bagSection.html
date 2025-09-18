@@ -33,7 +33,7 @@
     {% else %}
       <span></span>
     {% endif %}
-  <a href="/productDetail/{{ product.id }}/" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
+  <a href="/productDetail/{{ product.id }}/?section=bag" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
       <i class="far fa-eye text-lg"></i>
     </a>
   </div>
@@ -85,14 +85,14 @@
                 .then(res => res.json())
                 .then(data => {
                   let html = '';
-                  data.products.forEach(product => {
+                  data.products.slice(0, 4).forEach(product => {
                     html += `
                     <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
                       <div class="relative h-60 sm:h-64 bg-gray-50 flex items-center justify-center p-4 overflow-hidden">
                         <img src="${product.image || '{% static 'images/bag1.jpg' %}'}" alt="${product.name}" class="max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
                           ${product.badge ? `<div class='bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm pointer-events-auto'>${product.badge}</div>` : `<span></span>`}
-                          <a href="/productDetail/${product.id}/" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
+                          <a href="/productDetail/${product.id}/?section=bag" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
                             <i class="far fa-eye text-lg"></i>
                           </a>
                         </div>
@@ -118,17 +118,15 @@
               .then(res => res.json())
               .then(data => {
                 let html = '';
-                data.products.forEach(product => {
+                data.products.slice(0, 4).forEach(product => {
                   html += `
                   <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
                     <div class="relative h-60 sm:h-64 bg-gray-50 flex items-center justify-center p-4 overflow-hidden">
                       <img src="${product.image || '{% static 'images/bag1.jpg' %}'}" alt="${product.name}" class="max-h-44 object-contain transform group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                          ${product.badge ? `<div class='bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm pointer-events-auto'>${product.badge}</div>` : `<span></span>`}
-                          <a href="/productDetail/${product.id}/" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors pointer-events-auto">
-                            <i class="far fa-eye text-lg"></i>
-                          </a>
-                        </div>
+                      ${product.badge ? `<div class='absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-sm'>${product.badge}</div>` : ''}
+                      <a href="/productDetail/${product.id}/?section=bag" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:text-red-500 transition-colors">
+                        <i class="far fa-eye text-lg"></i>
+                      </a>
                     </div>
                     <div class="p-4 md:p-5 flex flex-col gap-2">
                       <h3 class="font-semibold text-gray-900 text-base md:text-lg line-clamp-1 hover:text-primary transition-colors">${product.name}</h3>

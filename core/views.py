@@ -28,8 +28,16 @@ def home(request):
 def productDetail(request, pk):
     from django.shortcuts import get_object_or_404
     product = get_object_or_404(Product, pk=pk)
-    # Fetch related products (same category, exclude current)
-    related_products = Product.objects.filter(category=product.category).exclude(pk=product.pk)[:4]
+    # Determine context (bag or shag) from GET param, fallback to category
+    section = request.GET.get('section')
+    is_bag = product.category.is_bag
+    is_shag = product.category.is_shag
+    if section == 'bag' or (is_bag and not is_shag):
+        related_products = Product.objects.filter(category__is_bag=True).exclude(pk=product.pk).order_by('-id')[:4]
+    elif section == 'shag' or (is_shag and not is_bag):
+        related_products = Product.objects.filter(category__is_shag=True).exclude(pk=product.pk).order_by('-id')[:4]
+    else:
+        related_products = Product.objects.exclude(pk=product.pk).order_by('-id')[:4]
     return render(request, 'productDetail.html', {
         'product': product,
         'related_products': related_products,

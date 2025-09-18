@@ -88,5 +88,25 @@
 </section>
 
 <!-- You May Also Like Section -->
-
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <h2 class="text-2xl sm:text-3xl font-bold mb-8">You May Also Like</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+    {% for p in related_products %}
+    <a href="/productDetail/{{ p.id }}/" class="group block border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+      {% if p.image %}
+        <img src="{{ p.image.url }}" alt="{{ p.name }}" class="h-48 w-full object-cover group-hover:scale-105 transition">
+      {% else %}
+        <img src="{% static 'images/sample-product-main.jpg' %}" alt="No Image" class="h-48 w-full object-cover group-hover:scale-105 transition">
+      {% endif %}
+      <div class="p-4">
+        <h3 class="text-sm font-medium text-gray-800 group-hover:text-primary">{{ p.name }}</h3>
+        <span class="text-xs text-gray-500">{{ p.category.name }}</span>
+        <div class="mt-1 text-primary font-semibold text-sm">PKR {{ p.price }}</div>
+      </div>
+    </a>
+    {% empty %}
+    <p>No related products found.</p>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
