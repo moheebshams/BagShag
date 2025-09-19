@@ -5,35 +5,44 @@
       <!-- Content Section -->
       <div class="p-6 sm:p-8 md:p-10 lg:p-12 w-full lg:w-7/12 xl:w-2/3" data-aos="fade-right">
         <div class="mb-4 sm:mb-5" data-aos="zoom-in">
-          <span class="bg-white text-primary text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 rounded-full inline-flex items-center shadow-sm">
+          <span
+            class="bg-white text-primary text-xs sm:text-sm font-bold px-3 sm:px-4 py-1.5 rounded-full inline-flex items-center shadow-sm">
             <i class="fas fa-bolt mr-2 text-xs sm:text-sm"></i>
             {{ offer.title }}
           </span>
         </div>
 
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold font-heading mb-4 sm:mb-5 text-white leading-tight" data-aos="fade-up" data-aos-delay="150">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold font-heading mb-4 sm:mb-5 text-white leading-tight"
+          data-aos="fade-up" data-aos-delay="150">
           {{ offer.sale }} <span class="text-yellow-300 block sm:inline-block">{{ offer.discount }}</span>
         </h2>
 
-        <p class="text-base sm:text-lg md:text-xl text-white text-opacity-90 mb-6 md:mb-8 max-w-2xl leading-relaxed" data-aos="fade-up" data-aos-delay="250">
+        <p class="text-base sm:text-lg md:text-xl text-white text-opacity-90 mb-6 md:mb-8 max-w-2xl leading-relaxed"
+          data-aos="fade-up" data-aos-delay="250">
           {{ offer.description }}
         </p>
 
         <!-- Countdown Timer -->
-        <div class="flex flex-wrap gap-2 sm:gap-3 mb-7 md:mb-9" id="countdown" data-endtime="{{ offer.end_time|date:'Y-m-d H:i:s' }}" data-aos="zoom-in" data-aos-delay="350">
-          <div class="time-box bg-white bg-opacity-20 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4 text-center w-[calc(25%-6px)] sm:w-20 md:w-22 lg:w-24 border border-white border-opacity-20">
+        <div class="flex flex-wrap gap-2 sm:gap-3 mb-7 md:mb-9" id="countdown"
+          data-endtime="{{ offer.end_time|date:'Y-m-d H:i:s' }}" data-aos="zoom-in" data-aos-delay="350">
+          <div
+            class="time-box bg-white bg-opacity-20 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4 text-center w-[calc(25%-6px)] sm:w-20 md:w-22 lg:w-24 border border-white border-opacity-20">
             <span class="time-value text-xl sm:text-2xl md:text-3xl font-bold text-white">00</span>
             <p class="text-xs sm:text-sm text-white text-opacity-80 mt-1">Days</p>
           </div>
-          <div class="time-box bg-white bg-opacity-20 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4 text-center w-[calc(25%-6px)] sm:w-20 md:w-22 lg:w-24 border border-white border-opacity-20">
+          <div
+            class="time-box bg-white bg-opacity-20 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4 text-center w-[calc(25%-6px)] sm:w-20 md:w-22 lg:w-24 border border-white border-opacity-20">
             <span class="time-value text-xl sm:text-2xl md:text-3xl font-bold text-white">00</span>
             <p class="text-xs sm:text-sm text-white text-opacity-80 mt-1">Hours</p>
           </div>
-          <div class="time-box bg-white bg-opacity-20 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4 text-center w-[calc(25%-6px)] sm:w-20 md:w-22 lg:w-24 border border-white border-opacity-20">
+          <div
+            class="time-box bg-white bg-opacity-20 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4 text-center w-[calc(25%-6px)] sm:w-20 md:w-22 lg:w-24 border border-white border-opacity-20">
             <span class="time-value text-xl sm:text-2xl md:text-3xl font-bold text-white">00</span>
             <p class="text-xs sm:text-sm text-white text-opacity-80 mt-1">Mins</p>
           </div>
-          <div class="time-box bg-white bg-opacity-20 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4 text-center w-[calc(25%-6px)] sm:w-20 md:w-22 lg:w-24 border border-white border-opacity-20">
+          <div
+            class="time-box bg-white bg-opacity-20 backdrop-blur-md rounded-lg sm:rounded-xl p-3 sm:p-4 text-center w-[calc(25%-6px)] sm:w-20 md:w-22 lg:w-24 border border-white border-opacity-20">
             <span class="time-value text-xl sm:text-2xl md:text-3xl font-bold text-white">00</span>
             <p class="text-xs sm:text-sm text-white text-opacity-80 mt-1">Secs</p>
           </div>
@@ -41,72 +50,77 @@
 
         <!-- Buttons -->
         <div class="flex flex-row gap-3 sm:gap-4" data-aos="fade-up" data-aos-delay="450">
-          <button class="bg-white text-primary px-5 sm:px-7 py-3 rounded-lg font-semibold flex items-center justify-center group focus:outline-none">
+          <button
+            class="bg-white text-primary px-5 sm:px-7 py-3 rounded-lg font-semibold flex items-center justify-center group focus:outline-none">
             <span class="text-sm sm:text-base">Shop Now</span>
-            <i class="fas fa-arrow-right ml-2 transform transition-transform duration-300 group-hover:translate-x-1 text-xs sm:text-sm"></i>
+            <i
+              class="fas fa-arrow-right ml-2 transform transition-transform duration-300 group-hover:translate-x-1 text-xs sm:text-sm"></i>
           </button>
-          <button class="bg-transparent border-2 border-white border-opacity-70 text-white px-5 sm:px-7 py-3 rounded-lg font-semibold hover:border-white focus:outline-none">
+          <button
+            class="bg-transparent border-2 border-white border-opacity-70 text-white px-5 sm:px-7 py-3 rounded-lg font-semibold hover:border-white focus:outline-none">
             <span class="text-sm sm:text-base">View All Offers</span>
           </button>
         </div>
       </div>
 
       <!-- Image Section -->
-      <div class="w-full lg:w-5/12 xl:w-1/3 flex items-center justify-center p-5 sm:p-7 md:p-9 lg:p-10" data-aos="fade-left">
-        <img src="{{ offer.image.url }}" alt="Special Offer" class="rounded-xl md:rounded-2xl w-full max-w-[180px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[320px] xl:max-w-[350px] object-contain" />
+      <div class="w-full lg:w-5/12 xl:w-1/3 flex items-center justify-center p-5 sm:p-7 md:p-9 lg:p-10"
+        data-aos="fade-left">
+        <img src="{{ offer.image.url }}" alt="Special Offer"
+          class="rounded-xl md:rounded-2xl w-full max-w-[180px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[320px] xl:max-w-[350px] object-contain" />
       </div>
     </div>
   </div>
 </section>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const countdownEl = document.getElementById("countdown");
-  if (!countdownEl) return;
+  document.addEventListener("DOMContentLoaded", function () {
+    const countdownEl = document.getElementById("countdown");
+    if (!countdownEl) return;
 
-  const endTimeStr = countdownEl.dataset.endtime;
-  if (!endTimeStr) {
-    countdownEl.innerHTML = "<p class='text-white font-bold text-center py-3'>Invalid end time</p>";
-    return;
-  }
-
-  // Parse ISO 8601 string correctly
-  const endTime = new Date(endTimeStr);
-  if (isNaN(endTime)) {
-    countdownEl.innerHTML = "<p class='text-white font-bold text-center py-3'>Invalid end time format</p>";
-    return;
-  }
-
-  function updateCountdown() {
-    const now = new Date();
-    const distance = endTime - now; // milliseconds
-
-    if (distance <= 0) {
-      countdownEl.innerHTML = "<p class='text-white font-bold text-center py-3'>Offer Expired</p>";
-      clearInterval(timer);
+    const endTimeStr = countdownEl.dataset.endtime;
+    if (!endTimeStr) {
+      countdownEl.innerHTML = "<p class='text-white font-bold text-center py-3'>Invalid end time</p>";
       return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    const boxes = countdownEl.querySelectorAll(".time-box .time-value");
-    if (boxes.length === 4) {
-      boxes[0].textContent = String(days).padStart(2, "0");
-      boxes[1].textContent = String(hours).padStart(2, "0");
-      boxes[2].textContent = String(minutes).padStart(2, "0");
-      boxes[3].textContent = String(seconds).padStart(2, "0");
+    // Parse ISO 8601 string correctly
+    const endTime = new Date(endTimeStr);
+    if (isNaN(endTime)) {
+      countdownEl.innerHTML = "<p class='text-white font-bold text-center py-3'>Invalid end time format</p>";
+      return;
     }
-  }
 
-  const timer = setInterval(updateCountdown, 1000);
-  updateCountdown();
+    function updateCountdown() {
+      const now = new Date();
+      const distance = endTime - now; // milliseconds
 
-  window.addEventListener('beforeunload', () => {
-    clearInterval(timer);
+      if (distance <= 0) {
+        countdownEl.innerHTML = "<p class='text-white font-bold text-center py-3'>Offer Expired</p>";
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const boxes = countdownEl.querySelectorAll(".time-box .time-value");
+      if (boxes.length === 4) {
+        boxes[0].textContent = String(days).padStart(2, "0");
+        boxes[1].textContent = String(hours).padStart(2, "0");
+        boxes[2].textContent = String(minutes).padStart(2, "0");
+        boxes[3].textContent = String(seconds).padStart(2, "0");
+      }
+    }
+
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    window.addEventListener('beforeunload', () => {
+      clearInterval(timer);
+    });
   });
-});
 
 </script>
