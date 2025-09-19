@@ -3,9 +3,9 @@
 {% block body %}
 <title>{% block title %}BagShag - Product Detail{% endblock %}</title>
 
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-aos="fade-up">
   <!-- Header Section -->
-  <div class="text-center mb-12 md:mb-16">
+  <div class="text-center mb-12 md:mb-16" data-aos="fade-down">
     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary tracking-tight">Product Details</h2>
     <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
   </div>
@@ -13,7 +13,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
     
     <!-- Left: Gallery -->
-    <div class="flex flex-col sm:flex-row sm:space-x-4">
+    <div class="flex flex-col sm:flex-row sm:space-x-4" data-aos="zoom-in">
       <!-- Main Image -->
       <div class="flex-1">
         {% if product.image %}
@@ -29,7 +29,7 @@
     </div>
 
     <!-- Right: Product Info -->
-    <div>
+    <div data-aos="fade-left">
       <!-- Title -->
       <h1 class="text-3xl sm:text-4xl font-extrabold mb-2">{{ product.name }}</h1>
 
@@ -58,7 +58,7 @@
       </p>
 
       <!-- Action Buttons -->
-      <div class="flex flex-row gap-4 mb-6">
+      <div class="flex flex-row gap-4 mb-6" data-aos="zoom-in-up" data-aos-delay="200">
         <button class="flex-1 bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition-colors shadow">
           <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
         </button>
@@ -68,7 +68,7 @@
       </div>
 
       <!-- Selling Points with FontAwesome icons -->
-      <ul class="space-y-2 text-gray-700 text-sm sm:text-base">
+      <ul class="space-y-2 text-gray-700 text-sm sm:text-base" data-aos="fade-up" data-aos-delay="300">
         <li class="flex items-center gap-2">
           <i class="fas fa-truck-fast text-primary"></i>
           Free shipping on orders over PKR 5,000
@@ -88,7 +88,7 @@
 </section>
 
 <!-- You May Also Like Section -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" data-aos="fade-up" data-aos-delay="200">
   <h2 class="text-2xl sm:text-3xl font-bold mb-8">You May Also Like</h2>
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
     {% for p in related_products %}

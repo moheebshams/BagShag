@@ -36,6 +36,8 @@
         },
       };
     </script>
+    <!-- AOS Library for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     {% include 'topHeader.html' %} 
@@ -43,5 +45,10 @@
     {% block body %} 
     {% endblock %} 
     {% include 'footer.html' %}
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html>

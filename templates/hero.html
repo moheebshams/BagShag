@@ -4,12 +4,12 @@
   <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center">
 
     <!-- Left Content -->
-    <div class="w-full lg:w-1/2 px-6 lg:px-12 xl:px-16 py-12 lg:py-20">
+    <div class="w-full lg:w-1/2 px-6 lg:px-12 xl:px-16 py-12 lg:py-20" data-aos="fade-right">
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
         <span class="block">{{ hero.title }}</span>
         <span class="block text-primary">{{ hero.subtitle }}</span>
       </h1>
-      <p class="mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-lg">
+      <p class="mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-lg" data-aos="fade-up" data-aos-delay="150">
         {{ hero.description }}
       </p>
 
@@ -31,7 +31,7 @@
     </div>
 
     <!-- Right Image -->
-    <div class="w-full lg:w-1/2">
+    <div class="w-full lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
       {% if hero and hero.image %}
         <img src="{{ hero.image.url }}" 
              alt="Hero Section Image" 

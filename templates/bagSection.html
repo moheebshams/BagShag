@@ -1,16 +1,16 @@
 {% load static %}
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
   <!-- Section Header -->
-  <div class="text-center mb-12 md:mb-16">
+  <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
     <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary tracking-tight">Bags Collection</h2>
-    <p class="text-gray-600 mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+    <p class="text-gray-600 mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="150">
       Elegant bags designed for every style and occasion.
     </p>
-    <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
+    <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full" data-aos="zoom-in" data-aos-delay="300"></div>
   </div>
 
   <!-- Categories -->
-  <nav class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-10 md:mb-12" id="bag-categories">
+  <nav class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-10 md:mb-12" id="bag-categories" data-aos="fade-up" data-aos-delay="400">
     <button class="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-md hover:shadow-lg" data-category="all">All</button>
   {% for category in bag_categories %}
       <button class="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-white text-gray-700 border border-gray-200 hover:bg-primary hover:text-white hover:border-primary" data-category="{{ category.id }}">{{ category.name }}</button>
@@ -18,7 +18,7 @@
   </nav>
 
   <!-- Products Grid -->
-  <main id="bags-products" class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6 lg:gap-8">
+  <main id="bags-products" class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6 lg:gap-8" data-aos="fade-up" data-aos-delay="500">
     {% for product in bag_products %}
     <div class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
       <div class="relative h-60 sm:h-64 bg-gray-50 flex items-center justify-center p-4 overflow-hidden">
@@ -57,7 +57,7 @@
   </main>
 
   <!-- View All -->
-  <div class="text-center mt-12 md:mt-16">
+  <div class="text-center mt-12 md:mt-16" data-aos="fade-up" data-aos-delay="300">
     <a href="{% url 'bagPage' %}" class="inline-flex items-center border-2 border-primary text-primary px-6 py-3 rounded-xl font-medium text-sm sm:text-base hover:bg-primary hover:text-white transition-all duration-200 group">
       View All Bags
       <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
